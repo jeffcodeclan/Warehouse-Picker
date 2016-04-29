@@ -4,7 +4,14 @@ require_relative '../warehouse_picker_functions.rb'
 class TestWarehouse < Minitest::Test
 
   def test_item_at_bay
-    item = item_at_bay('b5')# - function
+    item = item_at_bay(:b5)# - function
     assert_equal('nail filer', item)
   end
 end
+
+  def test_location_of_item
+    item = location_of_item('nail filer')# - function
+    assert_equal(:b5, location)
+  end
+end
+
