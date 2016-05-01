@@ -1,17 +1,36 @@
-require 'minitest/autorun'
-require_relative '../warehouse_picker_functions.rb'
+require( 'minitest/autorun' )
+require_relative( '../warehouse_picker_functions.rb' )
 
-class TestWarehouse < Minitest::Test
-
-  def test_item_at_bay
-    item = item_at_bay(:b5) # - function
-    assert_equal('nail filer', item)
+class Warehouse_Picker< MiniTest::Test
+  
+  # 1
+  def test_return_item()
+    result = return_item(:b5)
+    assert_equal("nail filer", result)
   end
-end
 
-  def test_location_of_item
-    item = location_of_item('nail filer') # - function
-    assert_equal(:b5, location)
+  # 2
+  def test_return_bay()
+    result = return_bay("nail filer")
+    assert_equal(:b5, result )
   end
-end
 
+  # 3
+  def test_return_multi_items()
+    result = return_multi_items(:b5, :b10, :b6)
+    assert_equal(["nail filer", "cookie jar", "tooth paste"], result)
+  end
+  
+  # 4
+  def test_return_multi_bays()
+    result = return_multi_bays("shoe lace", "rusty nail", "leg warmers")
+    assert_equal([:c9, :c1, :c10], result)
+  end
+
+  # 5
+  def test_number_of_bays_apart()
+    result = number_of_bays_apart(:b5, :b10, :b6)
+    assert_equal(5, result)
+  end
+
+end
